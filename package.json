@@ -6,16 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate-db": "yarn prisma migrate dev",
+    "commit-migrate": "prisma db push"
   },
   "dependencies": {
+    "@prisma/client": "3.10.0",
     "apollo-server-core": "^3.6.4",
     "apollo-server-micro": "^3.6.4",
     "graphql": "^16.3.0",
     "micro": "^9.3.4",
     "next": "12.1.0",
+    "prisma": "^3.10.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sqlite": "^4.0.25"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
