@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "migrate-db": "yarn prisma migrate dev",
-    "commit-migrate": "prisma db push"
+    "commit-migrate": "prisma db push",
+    "execute-migrate": "yarn migrate-db; yarn commit-migrate; yarn prisma generate"
   },
   "dependencies": {
     "@prisma/client": "3.10.0",

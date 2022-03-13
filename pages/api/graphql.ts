@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-micro";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
 import { typeDefs, resolvers } from "server/graphql";
+import { prisma } from "server/database/prisma";
 
 export const config = { api: { bodyParser: false } };
 
@@ -13,7 +14,7 @@ const apolloServer = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
   context: ({ req }: contextParameters) => {
     const auth = req.headers.authorization || "";
-    return { auth };
+    return { auth, database: prisma };
   },
 });
 

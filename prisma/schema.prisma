@@ -15,4 +15,13 @@ model User {
   name        String
   email       String
   password    String
+  profile     Profile?
+}
+
+model Profile {
+  id          String @id @default(cuid())
+  age         Int
+  image_url   String
+  user       User @relation(fields: [user_id], references: [id])
+  user_id     String 
 }
