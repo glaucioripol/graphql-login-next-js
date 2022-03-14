@@ -1,3 +1,3 @@
-import { loginTypeDef } from "./login";
+import { UserTypeDef } from "./UserTypeDef";
 
-export const typeDefs = [loginTypeDef];
+export const typeDefs = [UserTypeDef];

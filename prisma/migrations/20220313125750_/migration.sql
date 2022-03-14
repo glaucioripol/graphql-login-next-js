@@ -1,7 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL
 );
@@ -9,6 +8,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Profile" (
     "id" TEXT NOT NULL PRIMARY KEY,
+    "full_name" TEXT NOT NULL,
     "age" INTEGER NOT NULL,
     "image_url" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,

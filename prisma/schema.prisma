@@ -7,12 +7,11 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      =  env("DATABASE_URL")
 }
 
 model User {
   id          String @id @default(cuid())
-  name        String
   email       String
   password    String
   profile     Profile?
@@ -20,8 +19,9 @@ model User {
 
 model Profile {
   id          String @id @default(cuid())
+  full_name   String
   age         Int
   image_url   String
-  user       User @relation(fields: [user_id], references: [id])
+  user        User @relation(fields: [user_id], references: [id])
   user_id     String 
 }

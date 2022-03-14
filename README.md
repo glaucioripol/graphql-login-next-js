@@ -1,6 +1,7 @@
 # Login with graphql
-* [ ] setup graphql backend
-* [ ] setup firebase authentication [here](https://firebase.google.com/docs/auth/admin/manage-users)
+* [x] setup graphql backend
+* [ ] setup prisma orm
+  - [ ] prisma
 * [ ] setup create user with email, password, name and url_photo
 * [ ] setup login with email and password
   + [ ] pegar user details
