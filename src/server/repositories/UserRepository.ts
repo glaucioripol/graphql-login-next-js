@@ -1,19 +1,7 @@
+import bcrypt from "bcrypt";
 import { prisma } from "server/database/prisma";
 
-import bcrypt from "bcrypt";
-
-export type UserCreate = {
-  email: string;
-  password: string;
-  full_name: string;
-  age: number;
-  image_url: string;
-};
-
-export type UserLogin = {
-  email: string;
-  password: string;
-};
+import { UserCreate, UserLogin } from "shared/types";
 
 export const createUser = async ({
   age,

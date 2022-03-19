@@ -1,4 +1,6 @@
 export const configurations = {
-  server: {},
+  server: {
+    jwtSecret: process.env.JWT_SECRET,
+  },
   client: {},
 };

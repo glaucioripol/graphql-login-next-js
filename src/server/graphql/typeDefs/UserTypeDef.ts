@@ -8,6 +8,10 @@ export const UserTypeDef = gql`
     profile: Profile!
   }
 
+  type UserLog implements User {
+    authToken: String!
+  }
+
   type Profile {
     id: ID!
     age: Int!
@@ -30,6 +34,6 @@ export const UserTypeDef = gql`
 
   type Mutation {
     createUser(input: UserCreate): User
-    login(email: String!, password: String!): User
+    login(email: String!, password: String!): UserLogin
   }
 `;

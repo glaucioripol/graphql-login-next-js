@@ -1,5 +1,5 @@
-import { UserRepository } from "@/server/repositories";
-import { UserCreate, UserLogin } from "@/server/repositories/UserRepository";
+import { UserRepository } from "server/repositories";
+import { UserCreate, UserLogin } from "shared/types";
 
 export const UserResolvers = {
   Query: {

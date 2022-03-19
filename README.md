@@ -1,8 +1,8 @@
 # Login with graphql
 * [x] setup graphql backend
-* [ ] setup prisma orm
-  - [ ] prisma
-* [ ] setup create user with email, password, name and url_photo
+* [x] setup prisma orm
+  - [x] prisma
+* [x] setup create user with email, password, name and url_photo
 * [ ] setup login with email and password
   + [ ] pegar user details
 * [ ] setup logout
