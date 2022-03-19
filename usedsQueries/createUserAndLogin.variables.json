@@ -1,0 +1,11 @@
+{
+  "input": {
+    "email": "lorem@lorem.com",
+    "password": "12345",
+    "full_name": "euuuuu",
+    "age": 24,
+    "image_url": "https://github.com"
+  },
+  "email": "lorem@lorem.com",
+  "password": "12345"
+}
