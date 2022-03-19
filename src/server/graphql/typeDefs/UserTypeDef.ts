@@ -8,7 +8,10 @@ export const UserTypeDef = gql`
     profile: Profile!
   }
 
-  type UserLog implements User {
+  type UserLogin {
+    id: ID!
+    email: String!
+    profile: Profile!
     authToken: String!
   }
 

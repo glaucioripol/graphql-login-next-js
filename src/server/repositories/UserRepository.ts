@@ -3,6 +3,8 @@ import { prisma } from "server/database/prisma";
 
 import { UserCreate, UserLogin } from "shared/types";
 
+import { createToken } from "server/services/jwt";
+
 export const createUser = async ({
   age,
   email,
@@ -32,22 +34,31 @@ export const createUser = async ({
   };
 };
 
-export const login = async ({ email, password }: UserLogin) => {
+export const login = async ({ email, inputPassword }: UserLogin) => {
   const user = await prisma.user.findFirst({
     where: { email },
+    select: {
+      id: true,
+      password: true,
+      email: true,
+      profile: true,
+    },
   });
 
   if (!user) {
     throw new Error("User not found");
   }
 
-  const isValidPassword = await bcrypt.compare(password, user.password);
+  const isValidPassword = await bcrypt.compare(
+    inputPassword as string,
+    user.password
+  );
 
   if (!isValidPassword) {
     throw new Error("Invalid password");
   }
 
-  return user;
+  return { ...user, authToken: createToken(user) };
 };
 
 export const findUserById = async (id: string) => {

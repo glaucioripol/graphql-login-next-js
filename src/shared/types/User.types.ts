@@ -2,7 +2,8 @@ export interface UserCreate extends UserProfile, UserLogin {}
 
 export interface UserLogin {
   email: string;
-  password: string;
+  inputPassword?: string;
+  password?: string;
 }
 
 export interface UserProfile {

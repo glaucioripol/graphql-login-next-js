@@ -11,6 +11,6 @@ export const UserResolvers = {
     createUser: (_: any, { input }: { input: UserCreate }) =>
       UserRepository.createUser(input),
     login: (_: any, { email, password }: UserLogin) =>
-      UserRepository.login({ email, password }),
+      UserRepository.login({ email, inputPassword: password }),
   },
 };
