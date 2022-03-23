@@ -12,6 +12,7 @@
     "execute-migrate": "yarn migrate-db; yarn commit-migrate; yarn prisma generate"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.10",
     "@prisma/client": "3.10.0",
     "apollo-server-core": "^3.6.4",
     "apollo-server-micro": "^3.6.4",
