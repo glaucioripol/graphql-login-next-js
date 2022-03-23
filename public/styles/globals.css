@@ -1,6 +1,54 @@
+:root {
+  --background-color: #121212;
+  --primary-color: #bb86fc;
+  --primary-color-contrast: #ffffff;
+  --secondary-color: #f0f0f0;
+  --common-padding: 8px 16px;
+  --common-radius: 6px;
+  --common-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --common-font-size-input: 1rem;
+}
+
 * {
   border: 0;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: 0;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  border: var(--primary-color-contrast) solid;
+  border-radius: var(--common-radius);
+  font-size: var(--common-font-size-input);
+  padding: var(--common-padding);
+}
+
+.input:focus {
+  border-color: var(--primary-color);
+}
+
+.button {
+  background-color: var(--primary-color);
+  border-radius: var(--common-radius);
+  color: var(--primary-color-contrast);
+  font-size: var(--common-font-size-input);
+  padding: var(--common-padding);
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+  background-color: var(--primary-color-contrast);
+  color: var(--background-color);
 }
