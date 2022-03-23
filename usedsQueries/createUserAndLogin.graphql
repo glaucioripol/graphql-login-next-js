@@ -1,4 +1,4 @@
-mutation aa($input: UserCreate!) {
+mutation signUp($input: UserCreate!) {
   createUser(input: $input) {
     id
     email
