@@ -3,13 +3,14 @@ import type { AppProps } from "next/app";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-const client = new ApolloClient({
+export const graphqlClient = new ApolloClient({
   uri: "api/graphql",
   cache: new InMemoryCache(),
+  connectToDevTools: true,
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <ApolloProvider client={client}>
+  <ApolloProvider client={graphqlClient}>
     <Component {...pageProps} />
   </ApolloProvider>
 );

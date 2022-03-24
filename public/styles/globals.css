@@ -63,6 +63,7 @@ h1 + .form {
   border-radius: var(--common-radius);
   color: var(--primary-color-contrast);
   font-size: var(--common-font-size-input);
+  font-weight: bold;
   padding: var(--common-padding);
 }
 
@@ -71,4 +72,8 @@ h1 + .form {
 .button:focus {
   background-color: var(--primary-color-contrast);
   color: var(--background-color);
+}
+.button:disabled {
+  background-color: var(--secondary-color);
+  color: var(--primary-color-contrast);
 }

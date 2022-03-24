@@ -23,8 +23,8 @@
       "@/*": [
         "./src/*"
       ],
-      "client": [
-        "./src/client"
+      "client/*": [
+        "./src/client/*"
       ],
       "server/*": [
         "./src/server/*"
