@@ -7,6 +7,7 @@
   --common-radius: 6px;
   --common-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --common-font-size-input: 1rem;
+  --common-gap: 1rem;
 }
 
 * {
@@ -19,12 +20,31 @@
 
 body {
   background-color: var(--background-color);
+  color: var(--primary-color-contrast);
+  font-family: "Fira code", monospace;
+}
+
+.container {
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 520px;
+}
+.container--large {
+  max-width: 960px;
+}
+
+h1 + .form {
+  margin-top: 2rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+.input + label,
+.input + .button {
+  margin-top: var(--common-gap);
 }
 
 .input {
