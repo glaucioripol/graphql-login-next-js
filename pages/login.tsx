@@ -34,9 +34,9 @@ export default function Login() {
   return (
     <main className="container">
       <h1>Login with graphql</h1>
-      <pre>
+      {/* <pre>
         <code>{JSON.stringify(data?.login.email, null, 2)}</code>
-      </pre>
+      </pre> */}
 
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
@@ -50,6 +50,7 @@ export default function Login() {
           tabIndex={1}
           value={loginData.email}
           onChange={handleChange}
+          readOnly={loading}
         />
 
         <label htmlFor="password">Password</label>
@@ -62,6 +63,7 @@ export default function Login() {
           tabIndex={2}
           value={loginData.password}
           onChange={handleChange}
+          readOnly={loading}
         />
 
         <button

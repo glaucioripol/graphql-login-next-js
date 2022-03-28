@@ -75,5 +75,5 @@ h1 + .form {
 }
 .button:disabled {
   background-color: var(--secondary-color);
-  color: var(--primary-color-contrast);
+  color: var(--background-color);
 }
