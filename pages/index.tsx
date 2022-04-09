@@ -3,10 +3,8 @@ import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import Cookies from "js-cookie";
 
-import { UserLogged } from "shared/types";
 import { mutations } from "client/graphql";
-
-type LoginData = { login: UserLogged };
+import { LoginData } from "shared/types";
 
 export default function Index() {
   const router = useRouter();
@@ -19,7 +17,10 @@ export default function Index() {
     const userIsLogged = data && data.login?.authToken;
 
     if (userIsLogged) {
-      Cookies.set("auth-token", data.login.authToken, { expires: 1 });
+      Cookies.set("auth-token", userIsLogged, {
+        expires: 1,
+        sameSite: "strict",
+      });
 
       router.push("/authenticated/profile");
     }

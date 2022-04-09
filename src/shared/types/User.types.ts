@@ -18,3 +18,7 @@ export interface UserLogged extends UserLogin {
   authToken: string;
   profile: UserProfile;
 }
+
+// Queries Return Types
+export type LoginData = { login: UserLogged };
+export type SignUpData = { createUser: UserLogged };

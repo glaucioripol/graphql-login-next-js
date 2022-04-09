@@ -31,6 +31,7 @@ export const createUser = async ({
   return {
     ...user,
     profile,
+    authToken: createToken(user),
   };
 };
 

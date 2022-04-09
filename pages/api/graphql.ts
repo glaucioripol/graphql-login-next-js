@@ -12,7 +12,8 @@ const apolloServer = new ApolloServer({
   resolvers,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
   context: ({ req }: contextParameters) => {
-    const auth = req.headers.authorization || "";
+    const auth = req.cookies["auth-token"];
+
     return { auth };
   },
 });
