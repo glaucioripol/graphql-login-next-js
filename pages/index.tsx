@@ -1,34 +1,31 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
-import Cookies from "js-cookie";
 
 import { mutations } from "client/graphql";
-import { LoginData } from "shared/types";
+import { cookies } from "client/services";
+
+import { CookiesKeys, LoginData } from "shared/types";
 
 export default function Index() {
   const router = useRouter();
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
 
   const [executeMutation, { data, loading, error }] = useMutation<LoginData>(
     mutations.LOGIN_MUTATION
   );
 
   const redirectToLoggedAreaAfterLogin = useCallback(() => {
-    const userIsLogged = data && data.login?.authToken;
+    const userToken = data && data.login?.authToken;
 
-    if (userIsLogged) {
-      Cookies.set("auth-token", userIsLogged, {
-        expires: 1,
-        sameSite: "strict",
-      });
+    if (userToken) {
+      cookies.set(CookiesKeys.AUTH_TOKEN, userToken);
 
       router.push("/authenticated/profile");
     }
   }, [data, router]);
 
   useEffect(redirectToLoggedAreaAfterLogin, [redirectToLoggedAreaAfterLogin]);
-
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
 
   const handleChange = useCallback(
     (event: FormEvent<HTMLInputElement>) => {

@@ -1,10 +1,11 @@
 import { useMutation } from "@apollo/client";
 import { FormEvent, useCallback, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 
 import { mutations } from "client/graphql";
-import { SignUpData } from "shared/types";
+import { cookies } from "client/services";
+
+import { SignUpData, CookiesKeys } from "shared/types";
 
 export default function SignUp() {
   const router = useRouter();
@@ -51,13 +52,10 @@ export default function SignUp() {
   );
 
   const redirectToLoggedAreaAfterLogin = useCallback(() => {
-    const userIsLogged = data && data.createUser?.authToken;
+    const userToken = data && data.createUser?.authToken;
 
-    if (userIsLogged) {
-      Cookies.set("auth-token", userIsLogged, {
-        expires: 1,
-        sameSite: "strict",
-      });
+    if (userToken) {
+      cookies.set(CookiesKeys.AUTH_TOKEN, userToken);
 
       router.push("/authenticated/profile");
     }
@@ -83,6 +81,7 @@ export default function SignUp() {
           type="email"
           name="email"
           id="email"
+          tabIndex={1}
           minLength={6}
           maxLength={255}
           onChange={handleChange}
@@ -96,6 +95,7 @@ export default function SignUp() {
           type="password"
           name="password"
           id="password"
+          tabIndex={2}
           minLength={8}
           maxLength={128}
           onChange={handleChange}
@@ -109,6 +109,7 @@ export default function SignUp() {
           type="text"
           name="full_name"
           id="full_name"
+          tabIndex={3}
           minLength={2}
           maxLength={255}
           onChange={handleChange}
@@ -122,6 +123,7 @@ export default function SignUp() {
           type="text"
           name="age"
           id="age"
+          tabIndex={4}
           maxLength={3}
           onChange={handleChange}
           value={signUpData.age}
@@ -134,6 +136,7 @@ export default function SignUp() {
           type="url"
           name="image_url"
           id="url"
+          tabIndex={5}
           minLength={12}
           maxLength={500}
           onChange={handleChange}
@@ -141,7 +144,12 @@ export default function SignUp() {
           disabled={loading}
         />
 
-        <button className="button" type="submit" disabled={loading}>
+        <button
+          className="button"
+          type="submit"
+          disabled={loading}
+          tabIndex={6}
+        >
           {loading ? "Loading..." : "Sign Up"}
         </button>
       </form>

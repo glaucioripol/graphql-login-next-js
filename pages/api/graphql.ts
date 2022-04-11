@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-micro";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
 import { typeDefs, resolvers } from "server/graphql";
+import { CookiesKeys } from "shared/types";
 
 export const config = { api: { bodyParser: false } };
 
@@ -12,9 +13,9 @@ const apolloServer = new ApolloServer({
   resolvers,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
   context: ({ req }: contextParameters) => {
-    const auth = req.cookies["auth-token"];
+    const authToken = req.cookies[CookiesKeys.AUTH_TOKEN];
 
-    return { auth };
+    return { authToken };
   },
 });
 
