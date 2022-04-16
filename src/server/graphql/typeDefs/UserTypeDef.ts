@@ -31,7 +31,7 @@ export const UserTypeDef = gql`
   }
 
   type Query {
-    userProfile(id: ID!): User
+    userProfile(id: String!): User
     users: [User]
   }
 

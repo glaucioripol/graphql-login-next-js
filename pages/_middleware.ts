@@ -7,7 +7,6 @@ export function middleware(req: NextRequest) {
   const unauthenticatedRoutes = ["/", "/signup"];
 
   if (isAuthenticated && unauthenticatedRoutes.includes(url.pathname)) {
-    console.log("isAuthenticated", isAuthenticated);
     url.pathname = `/authenticated/profile`;
 
     return NextResponse.redirect(url);

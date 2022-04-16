@@ -31,7 +31,7 @@ export const createUser = async ({
   return {
     ...user,
     profile,
-    authToken: createToken(user),
+    authToken: createToken({ ...user, password: undefined }),
   };
 };
 
@@ -59,7 +59,12 @@ export const login = async ({ email, inputPassword }: UserLogin) => {
     throw new Error("Invalid password");
   }
 
-  return { ...user, authToken: createToken(user) };
+  const { password, ...userReturned } = user;
+
+  return {
+    ...userReturned,
+    authToken: createToken({ ...user, password: undefined }),
+  };
 };
 
 export const findUserById = async (id: string) => {
@@ -68,6 +73,7 @@ export const findUserById = async (id: string) => {
     select: {
       id: true,
       email: true,
+      password: false,
       profile: {
         select: {
           id: true,
@@ -91,6 +97,7 @@ export const findAllUsers = () =>
     select: {
       id: true,
       email: true,
+      password: false,
       profile: {
         select: {
           id: true,

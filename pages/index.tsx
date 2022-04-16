@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useCallback, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 
@@ -6,8 +6,10 @@ import { mutations } from "client/graphql";
 import { cookies } from "client/services";
 
 import { CookiesKeys, LoginData } from "shared/types";
+import { appStateContext } from "client/state";
 
 export default function Index() {
+  const { dispatch, actions } = useContext(appStateContext);
   const router = useRouter();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
 
@@ -19,11 +21,12 @@ export default function Index() {
     const userToken = data && data.login?.authToken;
 
     if (userToken) {
+      dispatch(actions.setLoggedIn(data.login));
       cookies.set(CookiesKeys.AUTH_TOKEN, userToken);
 
       router.push("/authenticated/profile");
     }
-  }, [data, router]);
+  }, [data, router, dispatch, actions]);
 
   useEffect(redirectToLoggedAreaAfterLogin, [redirectToLoggedAreaAfterLogin]);
 

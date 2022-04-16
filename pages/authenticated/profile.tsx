@@ -1,7 +1,16 @@
 import type { NextPage } from "next";
+import { useContext } from "react";
+
+import { appStateContext } from "client/state";
 
 const Profile: NextPage = () => {
-  return <div>profile</div>;
+  const { state } = useContext(appStateContext);
+
+  return (
+    <div>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+    </div>
+  );
 };
 
 export default Profile;
